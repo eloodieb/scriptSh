@@ -12,38 +12,38 @@ while [ $item_number -gt 0 ]
 
 # Le joueur joue
 echo ""
-echo "C'est à votre tour de jouer"
-echo ""
-echo -n "Il y a $item_number batons: "
+echo -n "$item_number items: "
 	for i in `seq 1 $item_number`
 	do
 	  echo -n "|"
 done
 echo "" 
-echo "Choisisez un nombre de baton entre 1 et 3"
+echo "It's your turn to play"
+echo -n "How many items do you want to take [between 1-3] ?"
 
 read playerChoice
 
 	if [ $playerChoice -lt 1 ] || [ $playerChoice -gt 3 ]
 	   then
-		echo "Ce choix n'existe pas"
+		echo "This choice doesn't exist"
 	else
 
 let "item_number = item_number - playerChoice"
-clear
-	
-# L'IA joue
-echo "C'est au tour de l'IA de jouer"
-echo ""
-echo -n "Il reste $item_number baton(s): "
-for  i in `seq 1 $item_number`
+echo -n "$item_number item(s): "
+for i in `seq 1 $item_number`
 do
-	echo -n "|"
-done 
+echo -n "|"
+done
+echo ""
+
+# L'IA joue
+echo ""
+echo "It's the IA's turn to play"
+
 let "iaChoice = 4 - playerChoice"
 let "item_number = item_number - iaChoice"
-echo ""
-echo "L'IA prend $iaChoice baton(s)"
+echo "IA takes $iaChoice item(s)"
 fi
 done
-echo "Tu as perdu...try again...^^"
+echo "You loose...try again...^^"
+
